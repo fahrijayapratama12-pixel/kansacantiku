@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galeri Pacar 💕</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+    background: linear-gradient(135deg, #ffd6e0, #ffc2d1);
+}
+
+/* LOGIN */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-box {
+    background: #fff0f5;
+    padding: 35px 25px;
+    border-radius: 25px;
+    box-shadow: 0 10px 25px rgba(255,105,180,0.3);
+    width: 280px;
+    text-align: center;
+    animation: fadeIn 1s ease;
+}
+
+h2 {
+    color: #ff69b4;
+}
+
+.input-group {
+    display: flex;
+    justify-content: center;
+}
+
+input {
+    width: 85%;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 12px;
+    border: 2px solid #ffc0cb;
+    outline: none;
+    text-align: center;
+}
+
+input:focus {
+    border-color: hotpink;
+    box-shadow: 0 0 8px pink;
+}
+
+button {
+    width: 85%;
+    padding: 12px;
+    margin-top: 10px;
+    background: #ff69b4;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #ff1493;
+    transform: scale(1.05);
+}
+
+#error {
+    color: red;
+    font-size: 14px;
+}
+
+/* GALERI */
+.gallery {
+    display: none;
+    padding: 20px;
+    text-align: center;
+    animation: fadeIn 1s ease;
+}
+
+.gallery h1 {
+    color: white;
+    text-shadow: 2px 2px 5px pink;
+}
+
+.photos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.photos img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(255,105,180,0.4);
+    transition: 0.3s;
+}
+
+.photos img:hover {
+    transform: scale(1.07);
+}
+
+/* ANIMASI */
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+/* LOVE BACKGROUND */
+.hearts {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.heart {
+    position: absolute;
+    color: pink;
+    animation: float 6s linear infinite;
+}
+
+@keyframes float {
+    from {transform: translateY(100vh);}
+    to {transform: translateY(-10vh);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="hearts" id="hearts"></div>
+
+<!-- LOGIN -->
+<div class="container" id="loginPage">
+    <div class="login-box">
+        <h2>Login 💖</h2>
+
+        <div class="input-group">
+            <input type="email" id="email" placeholder="Email">
+        </div>
+
+        <div class="input-group">
+            <input type="password" id="password" placeholder="Password">
+        </div>
+
+        <button onclick="login()">Masuk</button>
+        <p id="error"></p>
+    </div>
+</div>
+
+<!-- GALERI -->
+<div class="gallery" id="galleryPage">
+    <h1>kansaaaaakuuuu tersayanggggg 💕</h1>
+
+    <div class="photos">
+        <!-- GANTI FOTO DI SINI -->
+        <img src="foto1.jpg">
+        <img src="foto2.jpg">
+        <img src="foto3.jpg">
+        <img src="foto4.jpg">
+        <img src="foto5.jpg">
+    </div>
+</div>
+
+<script>
+function login() {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    if (email === "kansacantik@gmail.com" && password === "kansacantik123") {
+        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("galleryPage").style.display = "block";
+    } else {
+        document.getElementById("error").innerText = "Ups! salah 😢";
+    }
+}
+
+// LOVE EFFECT
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerText = "💗";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (10 + Math.random() * 20) + "px";
+    heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+
+    document.getElementById("hearts").appendChild(heart);
+
+    setTimeout(() => heart.remove(), 6000);
+}
+
+setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
